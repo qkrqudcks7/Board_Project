@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>미니 프로젝트</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:replace="fragments/header.html"></div>
+
+<!-- 게시판 미리보기 부분 -->
+<div class="container" style="margin-top:100px">
+    <div class="row">
+        <div class="col-lg-6" style="margin-top:20px">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="card-title">자유게시판</h4>
+                    <table class="table table-hover" id='board_list'>
+                        <thead>
+                        <tr>
+                            <th class="text-center w-25">글번호</th>
+                            <th>제목</th>
+                            <th class="text-center w-25 d-none d-xl-table-cell">작성날짜</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div th:each="content:${contentList}">
+                        <tr>
+                            <td class="text-center" th:text="${content.id -1}">1</td>
+                            <th><a th:href="@{/board/read(id=${content.id})}" th:text="${content.subject}">제목</a></th>
+                            <td class="text-center d-none d-xl-table-cell" th:text="${content.localDateTime}">2020-12-20</td>
+                        </tr>
+                        </div>
+                        </tbody>
+                    </table>
+                    <a th:href="@{/board/main}" class="btn btn-primary">더보기</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6" style="margin-top:20px">
+            <div class="card shadow">
+                <div class="card-body">
+                    <img src="/images/winter.jpg" width="500" height="500">
+                </div>
+            </div>
+    </div>
+</div>
+</div>
+<div th:replace="fragments/footer.html"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
