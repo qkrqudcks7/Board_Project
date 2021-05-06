@@ -1,4 +1,4 @@
-#  Board_Project_Version 1 ( 게시판 만들기고 호스팅하기 )
+#  게시판 (AWS EC2, RDS 연동 및 배포)
 
 ***
 
